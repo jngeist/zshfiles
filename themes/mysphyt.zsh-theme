@@ -1,4 +1,4 @@
-PROMPT='%{$fg[magenta]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$fg[blue]%}%{$reset_color%}
+PROMPT='%{$fg[magenta]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$fg[blue]%}${git_prompt_info)%{$reset_color%}
 %{$fg_bold[cyan]%}${PWD/#$HOME/~} %{$fg_bold[white]%}$(prompt_char)>%{$reset_color%} '
 function prompt_char {
     git branch >/dev/null 2>/dev/null && echo '±' && return
