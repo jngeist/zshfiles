@@ -1,7 +1,30 @@
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
 
+setopt autopushd
+setopt autocd
+setopt aliases
+
+func vim() {
+    if [[ $(uname) == "Darwin" ]] ; then
+        cwd=`pwd`
+        cd /Applications/MacVim.app/Contents/MacOS
+        exec ./Vim -f -c "cd $cwd" "$@"
+        cd "$cwd"
+    else
+        \vim "$@"
+    fi
+}
+
+alias cossh='ssh joshuag@cossh'
+alias a2ssh='ssh joshuag@a2ssh -p 7822'
+alias sshhome='ssh mysphyt@home.jnicholasgeist.com -p 22222 -L 5900:localhost:5900'
+autoload zmv
+
+
 bindkey -v
+bindkey -M vicmd "H" vi-beginning-of-line
+bindkey -M vicmd "L" vi-end-of-line
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
