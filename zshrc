@@ -12,7 +12,7 @@ export ZSH_THEME="mysphyt"
 # export CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
-# export DISABLE_AUTO_UPDATE="true"
+export DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
 # export DISABLE_LS_COLORS="true"
@@ -29,6 +29,7 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=~/Dropbox/scripts/:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin/
 export EDITOR='mvim -f'
+export CDPATH=.:~:~/Dropbox:~/Dropbox/Documents/:~/Dropbox/Documents/CoS:~/Dropbox/Documents/CoS/Classes
 
 setopt autopushd
 setopt autocd
@@ -38,11 +39,11 @@ func vim() {
     if [[ $(uname) == "Darwin" ]] ; then
         cwd=`pwd`
         cd /Applications/MacVim.app/Contents/MacOS
-        ./Vim -f -c "cd $cwd" "$@"
+        ./Vim -f -c "cd $cwd" $@
         cd "$cwd"
         return
     else
-        \vim "$@"
+        \vim $@
         return
     fi
 }
@@ -53,12 +54,16 @@ func sshhome() {
         ssh mysphyt@home.jnicholasgeist.com -p 22222 -L 5900:localhost:5900
     fi
 }
+
 alias cossh='ssh joshuag@cossh'
 alias a2ssh='ssh joshuag@a2ssh -p 7822'
 alias -g home 'home.jnicholasgeist.com'
+alias reload_completions='rehash'
+alias ez='mvim ~/.zshrc'
+alias sz='source ~/.zshrc'
+alias manage='python manage.py $@'
 autoload zmv
 
-CDPATH=.:~/Dropbox:~/Dropbox/Documents/:~/Dropbox/Documents/CoS:~/Dropbox/Documents/CoS/Classes
 
 bindkey -v
 bindkey -M vicmd "H" vi-beginning-of-line
