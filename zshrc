@@ -42,7 +42,7 @@ func vim() {
         ./Vim -f -c "cd $cwd" $@
         cd "$cwd"
         return
-    else
+    elsm e
         \vim $@
         return
     fi
@@ -54,9 +54,13 @@ func sshhome() {
         ssh mysphyt@home.jnicholasgeist.com -p 22222 -L 5900:localhost:5900
     fi
 }
+alias -g nfssh 'ssh.phx.nearlyfreespeech.net'
+func nfssh() {
+    ssh jngeist_hanfordweddings@ssh.phx.nearlyfreespeech.net
+}
 
 alias cossh='ssh joshuag@cossh'
-alias a2ssh='ssh joshuag@a2ssh -p 7822'
+alias a2ssh='ssh jngeist@a2ssh -p 7822'
 alias -g home 'home.jnicholasgeist.com'
 alias reload_completions='rehash'
 alias ez='mvim ~/.zshrc'
